@@ -12,3 +12,9 @@ npm-debug.log
 yarn-error.log
 /.idea
 /.vscode
+_lighthouse_ide_helper.php
+programmatic-types.graphql
+schema-directives.graphql
+.phpstorm.meta.php
+_ide_helper.php
+_ide_helper_models.php
