@@ -22,8 +22,7 @@ return new class extends Migration
                 ->constrained()
                 ->cascadeOnUpdate()
                 ->cascadeOnDelete();
-            $table->smallInteger('volume', unsigned: true);
-            $table->string('unit');
+            $table->string('measure');
             $table->timestamps();
 
             $table->primary(['ingredient_id', 'recipe_id']);
