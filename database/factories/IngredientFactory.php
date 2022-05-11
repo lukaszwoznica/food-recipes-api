@@ -17,7 +17,7 @@ class IngredientFactory extends Factory
     public function definition(): array
     {
         return [
-            'mame' => $this->faker->foodIngredient()
+            'name' => ucfirst($this->faker->foodIngredient())
         ];
     }
 }
