@@ -13,12 +13,12 @@ class Recipe extends Model
 
     public function ingredients(): BelongsToMany
     {
-        return $this->belongsToMany(Ingredient::class);
+        return $this->belongsToMany(Ingredient::class)->withPivot('measure')->withTimestamps();
     }
 
     public function categories(): BelongsToMany
     {
-        return $this->belongsToMany(RecipeCategory::class);
+        return $this->belongsToMany(RecipeCategory::class, 'category_recipe')->withTimestamps();
     }
 
     public function author(): BelongsTo

@@ -12,6 +12,6 @@ class RecipeCategory extends Model
 
     public function recipes(): BelongsToMany
     {
-        return $this->belongsToMany(Recipe::class);
+        return $this->belongsToMany(Recipe::class, 'category_recipe')->withTimestamps();
     }
 }
