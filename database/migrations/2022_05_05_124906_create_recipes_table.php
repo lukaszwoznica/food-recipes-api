@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('recipes', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->string('subtitle');
+            $table->string('subtitle')->nullable();
             $table->smallInteger('preparation_time', unsigned: true);
             $table->tinyInteger('difficulty_level', unsigned: true);
             $table->tinyInteger('servings', unsigned: true);
