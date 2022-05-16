@@ -21,7 +21,7 @@ class RecipeFactory extends Factory
             'title' => $this->faker->foodName(),
             'subtitle' => $this->faker->text(50),
             'preparation_time' => rand(5, 360),
-            'difficulty_level' => rand(1, 5),
+            'difficulty_level' => rand(0, 5),
             'servings' => rand(1, 10),
             'method' => $this->faker->text(),
             'author_id' => User::select('id')->inRandomOrder()->first(),
