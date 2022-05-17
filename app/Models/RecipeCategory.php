@@ -10,6 +10,10 @@ class RecipeCategory extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'name'
+    ];
+
     public function recipes(): BelongsToMany
     {
         return $this->belongsToMany(Recipe::class, 'category_recipe')->withTimestamps();

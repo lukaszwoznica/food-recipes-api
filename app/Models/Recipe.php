@@ -12,8 +12,18 @@ class Recipe extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'title',
+        'subtitle',
+        'preparation_time',
+        'difficulty_level',
+        'servings',
+        'method',
+        'author_id'
+    ];
+
     protected $casts = [
-        'difficulty_level' =>  RecipeDifficultyLevel::class
+        'difficulty_level' => RecipeDifficultyLevel::class
     ];
 
     public function ingredients(): BelongsToMany
