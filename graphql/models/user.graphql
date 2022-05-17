@@ -19,7 +19,7 @@ type User {
     updated_at: DateTime!
 }
 
-type Query {
+extend type Query {
     "List multiple users."
     users(
         "Filters by name. Accepts SQL LIKE wildcards `%` and `_`."
