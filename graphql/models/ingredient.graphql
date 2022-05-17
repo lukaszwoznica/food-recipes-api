@@ -6,6 +6,9 @@ type Ingredient {
     "Ingredient name."
     name: String!
 
+    "The amount of ingredient in a specific recipe."
+    measure: String
+
     "When the ingredient was created."
     created_at: DateTime!
 

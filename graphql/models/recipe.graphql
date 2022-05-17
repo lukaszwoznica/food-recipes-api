@@ -21,8 +21,14 @@ type Recipe {
     "Description of the dish preparation."
     method: String!
 
+    "List of ingredients needed to prepare the dish."
+    ingredients: [Ingredient!]! @belongsToMany
+
+    "List of categories to which the recipe belongs."
+    categories: [RecipeCategory!]! @belongsToMany
+
     "Recipe author's account."
-    author: User
+    author: User @belongsTo
 
     "When the recipe was created."
     created_at: DateTime!
