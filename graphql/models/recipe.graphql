@@ -1,0 +1,40 @@
+"Food recipe details."
+type Recipe {
+    "Unique primary key."
+    id: ID!
+
+    "Recipe title."
+    title: String!
+
+    "Recipe subtitle."
+    subtitle: String
+
+    "The time it takes to prepare the dish."
+    preparation_time: Int!
+
+    "The scale of the difficulty of preparing the dish."
+    difficulty_level: RecipeDifficultyLevelEnum!
+
+    "The number of dish portions the recipe produces."
+    servings: Int!
+
+    "Description of the dish preparation."
+    method: String!
+
+    "Recipe author's account."
+    author: User
+
+    "When the recipe was created."
+    created_at: DateTime!
+
+    "When the recipe was last updated."
+    updated_at: DateTime!
+}
+
+extend type Query {
+    "List multiple recipes."
+    recipes: [Recipe!]! @paginate(defaultCount: 25)
+
+    "Find a single recipe by primary key."
+    recipe(id: ID! @eq): Recipe @find
+}

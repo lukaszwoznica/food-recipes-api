@@ -1,0 +1,22 @@
+"Type of the food recipe."
+type RecipeCategory {
+    "Unique primary key."
+    id: ID!
+
+    "Category name."
+    name: String!
+
+    "When the category was created."
+    created_at: DateTime!
+
+    "When the category was last updated."
+    updated_at: DateTime!
+}
+
+extend type Query {
+    "List multiple recipe categories."
+    recipeCategories: [RecipeCategory!]! @paginate(defaultCount: 25)
+
+    "Find a single recipe category by primary key."
+    recipeCategory(id: ID! @eq): RecipeCategory @find
+}

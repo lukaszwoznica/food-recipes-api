@@ -1,0 +1,22 @@
+"Single component of a food recipe."
+type Ingredient {
+    "Unique primary key."
+    id: ID!
+
+    "Ingredient name."
+    name: String!
+
+    "When the ingredient was created."
+    created_at: DateTime!
+
+    "When the ingredient was last updated."
+    updated_at: DateTime!
+}
+
+extend type Query {
+    "List multiple ingredients."
+    ingredients: [Ingredient!]! @paginate(defaultCount: 25)
+
+    "Find a single ingredient by primary key."
+    ingredient(id: ID! @eq): Ingredient @find
+}
