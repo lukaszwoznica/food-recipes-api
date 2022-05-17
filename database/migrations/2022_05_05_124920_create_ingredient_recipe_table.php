@@ -22,7 +22,7 @@ return new class extends Migration
                 ->constrained()
                 ->cascadeOnUpdate()
                 ->cascadeOnDelete();
-            $table->string('measure');
+            $table->string('measure')->nullable();
             $table->timestamps();
 
             $table->primary(['ingredient_id', 'recipe_id']);
