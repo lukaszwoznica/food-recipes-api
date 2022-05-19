@@ -23,3 +23,26 @@ extend type Query {
     "Find a single recipe category by primary key."
     recipeCategory(id: ID! @eq): RecipeCategory @find
 }
+
+"An object with fields for creating new recipe category."
+input CreateRecipeCategoryInput {
+    "A unique string with length between 3 and 255 characters."
+    name: String! @trim @rules(apply: ["string", "min:3", "max:255", "unique:recipe_categories,name"], attribute: "name")
+}
+
+"An object with fields for updating recipe category."
+input UpdateRecipeCategoryInput @validator {
+    "Primary key of existing recipe category."
+    id: ID!
+    "A unique string with length between 3 and 255 characters."
+    name: String! @trim
+}
+
+extend type Mutation {
+    "Create new recipe category."
+    createRecipeCategory(input: CreateRecipeCategoryInput! @spread): RecipeCategory! @create
+    "Update existing recipe category."
+    updateRecipeCategory(input: UpdateRecipeCategoryInput! @spread): RecipeCategory! @update
+    "Delete recipe category."
+    deleteRecipeCategory(id: ID!): RecipeCategory! @delete
+}
