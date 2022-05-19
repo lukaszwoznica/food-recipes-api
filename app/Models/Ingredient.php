@@ -26,4 +26,11 @@ class Ingredient extends Model
             get: fn() => $this->pivot?->measure
         );
     }
+
+    public function name(): Attribute
+    {
+        return Attribute::make(
+            set: fn($name) => ucfirst($name)
+        );
+    }
 }

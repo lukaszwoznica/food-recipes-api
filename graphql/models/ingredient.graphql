@@ -23,3 +23,26 @@ extend type Query {
     "Find a single ingredient by primary key."
     ingredient(id: ID! @eq): Ingredient @find
 }
+
+"An object with fields for creating new ingredient."
+input CreateIngredientInput {
+    "A unique string with length between 2 and 255 characters."
+    name: String! @trim @rules(apply: ["string", "min:2", "max:255", "unique:ingredients,name"], attribute: "name")
+}
+
+"An object with fields for updating ingredient."
+input UpdateIngredientInput @validator {
+    "Primary key of existing ingredient."
+    id: ID!
+    "A unique string with length between 2 and 255 characters."
+    name: String! @trim
+}
+
+extend type Mutation {
+    "Create new ingredient."
+    createIngredient(input: CreateIngredientInput! @spread): Ingredient! @create
+    "Update existing ingredient."
+    updateIngredient(input: UpdateIngredientInput! @spread): Ingredient! @update
+    "Delete ingredient."
+    deleteIngredient(id: ID!): Ingredient! @delete
+}
